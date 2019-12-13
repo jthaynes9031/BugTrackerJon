@@ -1,0 +1,243 @@
+﻿@model BugTrackerJon.Models.ProjectViewModel
+@using BugTrackerJon.Helpers;
+
+@{
+    UserRoles roleHelper = new UserRoles();
+}
+
+<h2></h2>
+
+<div class="breadcome-area mg-b-30 small-dn">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcome-list shadow-reset">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="breadcome-heading">
+                                <h2>Projects</h2>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul class="breadcome-menu">
+                                <li>
+                                    <a href="@Url.Action("Index","Projects")">Home</a> <span class="bread-slash">/</span>
+                                </li>
+                                <li>
+                                    <span class="bread-blod">Projects</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="project-details-area mg-b-15">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                <div class="project-details-wrap shadow-reset">
+                    <div class="row">
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                            <div class="project-details-title">
+                                <h2><span class="profile-details-name-nn"></span>@Html.DisplayFor(model => model.Projects.Name) </h2>
+                            </div>
+                            <ul id="adminpro-demo2" class="comment-action-st collapse">
+                                <li>
+                                    <a href="#">Add</a>
+                                </li>
+                                <li>
+                                    <a href="#">Report</a>
+                                </li>
+                                <li>
+                                    <a href="#">Hide Profile</a>
+                                </li>
+                                <li>
+                                    <a href="#">Turn on Profile</a>
+                                </li>
+                                <li>
+                                    <a href="#">Turn off Profile</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                            <div class="admin-comment-month project-details-action">
+                                <button class="comment-setting" data-toggle="collapse" data-target="#adminpro-demo2">...</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="project-details-mg">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <div class="project-details-st">
+                                            <span><strong>Status:</strong></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                        <div class="btn-group project-list-ad">
+                                            <button class="btn btn-white btn-xs">Active</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-details-mg">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <div class="project-details-st">
+                                            <span><strong>@Html.DisplayNameFor(model => model.Projects.Name)</strong></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                        <div class="project-details-dt">
+                                            <span>@Html.DisplayFor(model => model.Projects.Name)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="project-details-mg">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <div class="project-details-st">
+                                            <span><strong>@Html.DisplayNameFor(model => model.Projects.UpdatedDate)</strong></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                        <div class="project-details-dt">
+                                            <span>@Html.DisplayFor(model => model.Projects.UpdatedDate)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-details-mg">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <div class="project-details-st">
+                                            <span><strong>  @Html.DisplayNameFor(model => model.Projects.CreatedDate)</strong></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                        <div class="project-details-dt">
+                                            <span>@Html.DisplayFor(model => model.Projects.CreatedDate)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="project-details-tab">
+                                <ul class="nav nav-tabs res-pd-less-sm">
+                                    <li class="active">
+                                        <a data-toggle="tab" href="#home" aria-expanded="undefined">Project Tickets</a>
+                                    </li>
+                                    <li>
+                                        <a data-toggle="tab" href="#users" aria-expanded="undefined">Users</a>
+                                    </li>
+                                </ul>
+                                <div id="home" class="tab-pane fade in active animated zoomInLeft">
+                                    <div class="project-details-completeness">
+                                        <div class="data-table-area mg-b-15">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="sparkline13-list shadow-reset">
+                                                            <div class="sparkline13-graph">
+                                                                <div class="datatable-dashv1-list custom-datatable-overright">
+                                                                    <div id="toolbar">
+                                                                        <select class="form-control">
+                                                                            <option value="">Export Basic</option>
+                                                                            <option value="all">Export All</option>
+                                                                            <option value="selected">Export Selected</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true" data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th data-field="task" data-editable="true">Title</th>
+                                                                                <th data-field="company" data-editable="true">Type</th>
+                                                                                <th data-field="price" data-editable="true">Status</th>
+                                                                                <th data-field="phone" data-editable="true">Priority</th>
+                                                                                <th data-field="date" data-editable="true">Date</th>
+                                                                                <th data-field="complete">Completed</th>
+                                                                                <th data-field="action">Actions</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        <tbody>
+                                                                            @foreach (var ticket in Model.Tickets)
+                                                                            {
+                                                                                <tr>
+                                                                                    <td>@ticket.Title</td>
+                                                                                    <td>@ticket.TicketType.TypeName</td>
+                                                                                    <td class="@BadgeHelper.GetStatusColorClass(ticket.TicketStatusId)">@ticket.TicketStatus.StatusName</td>
+                                                                                    <td class="@BadgeHelper.GetColorClass(ticket.TicketPriorityId)">@ticket.TicketPriority.PriorityName</td>
+                                                                                    <td>@ticket.Created</td>
+                                                                                    <td class="datatable-ct"><span class="pie">1/6</span></td>
+                                                                                    <td></td>
+                                                                                </tr>
+                                                                            }
+                                                                        </tbody>
+                                                                    </table>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div id="users" class="tab-pane fade animated bounceInUp">
+                                    <div class="project-details-completeness">
+                                        <div class="data-table-area mg-b-15">
+                                            <div class="container-fluid">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true" data-cookie-id-table="saveId" data-show-export="true" data-click-to-select="true" data-toolbar="#toolbar">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th data-field="task">First Name</th>
+                                                                    <th data-field="date">Last Name</th>
+                                                                    <th data-field="company">Role</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @foreach (var user in Model.Users)
+                                                                {
+                                                                    <tr>
+                                                                        <td>@user.FirstName</td>
+                                                                        <td>@user.LastName</td>
+                                                                        <td>@roleHelper.ListUserRoles(user.Id).FirstOrDefault()</td>
+                                                                    </tr>
+                                                                }
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <div class="project-details-descri project-details-mg-t-30 shadow-reset">
+                    <h2>@Html.DisplayNameFor(model => model.Projects.Description)</h2>
+                    <p>@Html.DisplayFor(model => model.Projects.Description)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+
+}

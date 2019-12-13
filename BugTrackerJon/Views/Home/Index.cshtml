@@ -1,0 +1,1055 @@
+﻿@model BugTrackerJon.Models.Dashboard
+@using BugTrackerJon.Helpers;
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<!-- Breadcome start-->
+<div class="breadcome-area mg-b-30 small-dn">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="breadcome-list map-mg-t-40-gl shadow-reset">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="breadcome-heading">
+                                <h2>Welcome To Adminpro</h2>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul class="breadcome-menu">
+                                <li>
+                                    <a href="#">Home</a> <span class="bread-slash">/</span>
+                                </li>
+                                <li>
+                                    <span class="bread-blod">Dashboard 2</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcome End-->
+<!-- Breadcome start-->
+<div class="breadcome-area des-none mg-b-30">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="breadcome-list map-mg-t-40-gl shadow-reset">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <div class="breadcome-heading">
+                                <h2>Thanks for Visits</h2>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <ul class="breadcome-menu">
+                                <li>
+                                    <a href="#">Home</a> <span class="bread-slash">/</span>
+                                </li>
+                                <li>
+                                    <span class="bread-blod">Dashboard</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Breadcome End-->
+@if (User.IsInRole("Admin"))
+{
+    <div class="income-order-visit-user-area">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="income-dashone-total shadow-reset nt-mg-b-30">
+                        <div class="income-title">
+                            <div class="main-income-head">
+                                <h2>Users</h2>
+                                <div class="main-income-phara">
+                                    <p>Total</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="income-dashone-pro">
+                            <div class="income-rate-total">
+                                <div class="price-adminpro-rate">
+                                    <h3><span></span><span class="counter">@Model.myusers.Count()</span></h3>
+                                </div>
+                                <div class="price-graph">
+                                    <span id="sparkline1"></span>
+                                </div>
+                            </div>
+                            <div class="income-range">
+                                <p>All users</p>
+                                <span class="income-percentange"><i class="fa fa-bolt"></i></span>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="income-dashone-total shadow-reset nt-mg-b-30">
+                        <div class="income-title">
+                            <div class="main-income-head">
+                                <h2>Tickets</h2>
+                                <div class="main-income-phara order-cl">
+                                    <p>Tickets</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="income-dashone-pro">
+                            <div class="income-rate-total">
+                                <div class="price-adminpro-rate">
+                                    <h3><span class="counter">@Model.mytickets.Count()</span></h3>
+                                </div>
+                                <div class="price-graph">
+                                    <span id="sparkline6"></span>
+                                </div>
+                            </div>
+                            <div class="income-range order-cl">
+                                <p>New Tickets</p>
+                                <span class="income-percentange"><i class="fa fa-level-up"></i></span>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="income-dashone-total shadow-reset nt-mg-b-30">
+                        <div class="income-title">
+                            <div class="main-income-head">
+                                <h2>Projects</h2>
+                                <div class="main-income-phara visitor-cl">
+                                    <p>Projects</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="income-dashone-pro">
+                            <div class="income-rate-total">
+                                <div class="price-adminpro-rate">
+                                    <h3><span class="counter">@Model.myprojects.Count()</span></h3>
+                                </div>
+                                <div class="price-graph">
+                                    <span id="sparkline2"></span>
+                                </div>
+                            </div>
+                            <div class="income-range visitor-cl">
+                                <p>Number of Projects</p>
+                                <span class="income-percentange"><i class="fa fa-level-up"></i></span>
+                            </div>
+                            <div class="row">
+                                @*<a href="@Html.Action("Create","Project")"> Add Project</a>*@
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="charts-area mg-b-15">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="charts-single-pro shadow-reset nt-mg-b-30">
+                        <div class="alert-title">
+                            <h2>Bar Chart</h2>
+                            <p>A bar chart provides a way of showing data values. It is sometimes used to show trend data. we create a bar chart for a single dataset and render that in our page.</p>
+                        </div>
+                        <div id="bar1-chart">
+                            <canvas id="bcpriority"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="charts-single-pro shadow-reset nt-mg-b-30">
+                        <div class="alert-title">
+                            <h2>Bar Chart</h2>
+                            <p>A bar chart provides a way of showing data values. It is sometimes used to show trend data. we create a bar chart for a single dataset and render that in our page.</p>
+                        </div>
+                        <div id="bar1-chart">
+                            <canvas id="barchart1"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- income order visit user End -->
+    <div class="income-dashone-total shadow-reset nt-mg-b-30">
+        <div class="breadcome-area">
+            <div class="row">
+                <div class="col-md-6">
+                    <div id="demoChart1"></div>
+                </div>
+                <div class="col-md-6">
+                    <div id="demoChart2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="feed-mesage-project-area">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="sparkline9-list shadow-reset mg-tb-30">
+                        <div class="sparkline9-hd">
+                            <div class="main-sparkline9-hd">
+                                <h1>User project list</h1>
+                                <div class="sparkline9-outline-icon">
+                                    <span class="sparkline9-collapse-link"><i class="fa fa-chevron-up"></i></span>
+                                    <span><i class="fa fa-wrench"></i></span>
+                                    <span class="sparkline9-collapse-close"><i class="fa fa-times"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sparkline9-graph dashone-comment">
+                            <div class="datatable-dashv1-list custom-datatable-overright dashtwo-project-list-data">
+                                <div id="toolbar1">
+                                    <select class="form-control">
+                                        <option value="">Export Basic</option>
+                                        <option value="all">Export All</option>
+                                        <option value="selected">Export Selected</option>
+                                    </select>
+                                </div>
+                                <table id="table1" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-resizable="true" data-cookie="true" data-page-size="5" data-page-list="[5, 10, 15, 20, 25]" data-cookie-id-table="saveId" data-show-export="true">
+                                    <thead>
+                                        <tr>
+                                            <th data-field="ProjectId">Name</th>
+                                            <th data-field="CreatedDate">Created</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var project in Model.myprojects)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @project.Name
+                                                </td>
+                                                <td>
+                                                    @project.CreatedDate
+                                                </td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="sparkline9-list shadow-reset mg-tb-30">
+                        <div class="sparkline9-hd">
+                            <div class="main-sparkline9-hd">
+                                <h1>User Tickets list</h1>
+                                <div class="sparkline9-outline-icon">
+                                    <span class="sparkline9-collapse-link"><i class="fa fa-chevron-up"></i></span>
+                                    <span><i class="fa fa-wrench"></i></span>
+                                    <span class="sparkline9-collapse-close"><i class="fa fa-times"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sparkline9-graph dashone-comment">
+                            <div class="datatable-dashv1-list custom-datatable-overright dashtwo-project-list-data">
+                                <div id="toolbar1">
+                                    <select class="form-control">
+                                        <option value="">Export Basic</option>
+                                        <option value="all">Export All</option>
+                                        <option value="selected">Export Selected</option>
+                                    </select>
+                                </div>
+                                <table id="table1" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-resizable="true" data-cookie="true" data-page-size="5" data-page-list="[5, 10, 15, 20, 25]" data-cookie-id-table="saveId" data-show-export="true">
+                                    <thead>
+                                        <tr>
+                                            <th data-field="TicketId">Name</th>
+                                            <th data-field="TicketPriorities">Priority</th>
+                                            <th data-field="TicketTypes">Type</th>
+                                            <th data-field="TicketStatus">Status</th>
+                                            <th data-field="TicketCreated">Date</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @foreach (var ticket in Model.mytickets)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    @ticket.Id
+                                                </td>
+                                                <td>
+                                                    @ticket.TicketPriority.PriorityName
+
+                                                </td>
+                                                <td>
+
+                                                    @ticket.TicketType.TypeName
+                                                </td>
+                                                <td>
+                                                    @ticket.TicketStatus.StatusName
+
+                                                </td>
+                                                <td>
+
+                                                    @ticket.Created
+                                                </td>
+                                            </tr>
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- income order visit user Start -->
+}
+else if (User.IsInRole("Submitter"))
+{
+    <div class="income-order-visit-user-area">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="income-dashone-total shadow-reset nt-mg-b-30">
+                        <div class="income-title">
+                            <div class="main-income-head">
+                                <h2>Users</h2>
+                                <div class="main-income-phara">
+                                    <p>Total</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="income-dashone-pro">
+                            <div class="income-rate-total">
+                                <div class="price-adminpro-rate">
+                                    <h3><span></span><span class="counter">@Model.myusers.Count()</span></h3>
+                                </div>
+                                <div class="price-graph">
+                                    <span id="sparkline1"></span>
+                                </div>
+                            </div>
+                            <div class="income-range">
+                                <p>Total income</p>
+                                <span class="income-percentange"><i class="fa fa-bolt"></i></span>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="income-dashone-total shadow-reset nt-mg-b-30">
+                        <div class="income-title">
+                            <div class="main-income-head">
+                                <h2>Tickets</h2>
+                                <div class="main-income-phara order-cl">
+                                    <p>Tickets</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="income-dashone-pro">
+                            <div class="income-rate-total">
+                                <div class="price-adminpro-rate">
+                                    <h3><span class="counter">@Model.mytickets.Count()</span></h3>
+                                </div>
+                                <div class="price-graph">
+                                    <span id="sparkline6"></span>
+                                </div>
+                            </div>
+                            <div class="income-range order-cl">
+                                <p>New Tickets</p>
+                                <span class="income-percentange"><i class="fa fa-level-up"></i></span>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="income-dashone-total shadow-reset nt-mg-b-30">
+                        <div class="income-title">
+                            <div class="main-income-head">
+                                <h2>Projects</h2>
+                                <div class="main-income-phara visitor-cl">
+                                    <p>Projects</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="income-dashone-pro">
+                            <div class="income-rate-total">
+                                <div class="price-adminpro-rate">
+                                    <h3><span class="counter">@Model.myprojects.Count()</span></h3>
+                                </div>
+                                <div class="price-graph">
+                                    <span id="sparkline2"></span>
+                                </div>
+                            </div>
+                            <div class="income-range visitor-cl">
+                                <p>Number of Projects</p>
+                                <span class="income-percentange"><i class="fa fa-level-up"></i></span>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- income order visit user End -->
+    <div class="income-dashone-total shadow-reset nt-mg-b-30">
+        <div class="row">
+            <div class="col-md-6">
+                <div id="demoChart1"></div>
+            </div>
+            <div class="col-md-6">
+                <div id="demoChart2"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="sparkline9-list shadow-reset mg-tb-30">
+            <div class="sparkline9-hd">
+                <div class="main-sparkline9-hd">
+                    <h1>User project list</h1>
+                    <div class="sparkline9-outline-icon">
+                        <span class="sparkline9-collapse-link"><i class="fa fa-chevron-up"></i></span>
+                        <span><i class="fa fa-wrench"></i></span>
+                        <span class="sparkline9-collapse-close"><i class="fa fa-times"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="sparkline9-graph dashone-comment">
+                <div class="datatable-dashv1-list custom-datatable-overright dashtwo-project-list-data">
+                    <div id="toolbar1">
+                        <select class="form-control">
+                            <option value="">Export Basic</option>
+                            <option value="all">Export All</option>
+                            <option value="selected">Export Selected</option>
+                        </select>
+                    </div>
+                    <table id="table1" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-resizable="true" data-cookie="true" data-page-size="5" data-page-list="[5, 10, 15, 20, 25]" data-cookie-id-table="saveId" data-show-export="true">
+                        <thead>
+                            <tr>
+                                <th data-field="ProjectId">Name</th>
+                                <th data-field="CreatedDate">Created</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var project in Model.myprojects)
+                            {
+                                <tr>
+                                    <td>
+                                        @project.Name
+
+                                    </td>
+                                    <td>
+
+                                        @project.CreatedDate
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="sparkline9-list shadow-reset mg-tb-30">
+            <div class="sparkline9-hd">
+                <div class="main-sparkline9-hd">
+                    <h1>User Tickets list</h1>
+                    <div class="sparkline9-outline-icon">
+                        <span class="sparkline9-collapse-link"><i class="fa fa-chevron-up"></i></span>
+                        <span><i class="fa fa-wrench"></i></span>
+                        <span class="sparkline9-collapse-close"><i class="fa fa-times"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="sparkline9-graph dashone-comment">
+                <div class="datatable-dashv1-list custom-datatable-overright dashtwo-project-list-data">
+                    <div id="toolbar1">
+                        <select class="form-control">
+                            <option value="">Export Basic</option>
+                            <option value="all">Export All</option>
+                            <option value="selected">Export Selected</option>
+                        </select>
+                    </div>
+                    <table id="table1" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-resizable="true" data-cookie="true" data-page-size="5" data-page-list="[5, 10, 15, 20, 25]" data-cookie-id-table="saveId" data-show-export="true">
+                        <thead>
+                            <tr>
+                                <th data-field="TicketId">Name</th>
+                                <th data-field="TicketPriorities">Priority</th>
+                                <th data-field="TicketTypes">Type</th>
+                                <th data-field="TicketStatus">Status</th>
+                                <th data-field="TicketCreated">Date</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var ticket in Model.mytickets)
+                            {
+                                <tr>
+                                    <td>
+                                        @ticket.Id
+                                    </td>
+                                    <td>
+                                        @ticket.TicketPriority.PriorityName
+
+                                    </td>
+                                    <td>
+
+                                        @ticket.TicketType.TypeName
+                                    </td>
+                                    <td>
+                                        @ticket.TicketStatus.StatusName
+
+                                    </td>
+                                    <td>
+
+                                        @ticket.Created
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else if (User.IsInRole("Developer"))
+{
+    <div class="income-order-visit-user-area">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="income-dashone-total shadow-reset nt-mg-b-30">
+                        <div class="income-title">
+                            <div class="main-income-head">
+                                <h2>Users</h2>
+                                <div class="main-income-phara">
+                                    <p>Total</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="income-dashone-pro">
+                            <div class="income-rate-total">
+                                <div class="price-adminpro-rate">
+                                    <h3><span></span><span class="counter">@Model.myusers.Count()</span></h3>
+                                </div>
+                                <div class="price-graph">
+                                    <span id="sparkline1"></span>
+                                </div>
+                            </div>
+                            <div class="income-range">
+                                <p>Number of Users</p>
+                                <span class="income-percentange"><i class="fa fa-bolt"></i></span>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="income-dashone-total shadow-reset nt-mg-b-30">
+                        <div class="income-title">
+                            <div class="main-income-head">
+                                <h2>Tickets</h2>
+                                <div class="main-income-phara order-cl">
+                                    <p>Tickets</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="income-dashone-pro">
+                            <div class="income-rate-total">
+                                <div class="price-adminpro-rate">
+                                    <h3><span class="counter">@Model.mytickets.Count()</span></h3>
+                                </div>
+                                <div class="price-graph">
+                                    <span id="sparkline6"></span>
+                                </div>
+                            </div>
+                            <div class="income-range order-cl">
+                                <p>New Tickets</p>
+                                <span class="income-percentange"><i class="fa fa-level-up"></i></span>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="income-dashone-total shadow-reset nt-mg-b-30">
+                        <div class="income-title">
+                            <div class="main-income-head">
+                                <h2>Projects</h2>
+                                <div class="main-income-phara visitor-cl">
+                                    <p>Projects</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="income-dashone-pro">
+                            <div class="income-rate-total">
+                                <div class="price-adminpro-rate">
+                                    <h3><span class="counter">@Model.myprojects.Count()</span></h3>
+                                </div>
+                                <div class="price-graph">
+                                    <span id="sparkline2"></span>
+                                </div>
+                            </div>
+                            <div class="income-range visitor-cl">
+                                <p>Number of Projects</p>
+                                <span class="income-percentange"><i class="fa fa-level-up"></i></span>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- income order visit user End -->
+        </div>
+    </div>
+    <div class="income-dashone-total shadow-reset nt-mg-b-30">
+        <div class="row">
+            <div class="col-md-6">
+                <div id="demoChart1"></div>
+            </div>
+            <div class="col-md-6">
+                <div id="demoChart2"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        @*<div class="sparkline9-list shadow-reset mg-tb-30">*@
+        <div class="sparkline9-hd">
+            <div class="main-sparkline9-hd">
+                <h1>User Tickets list</h1>
+                <div class="sparkline9-outline-icon">
+                    <span class="sparkline9-collapse-link"><i class="fa fa-chevron-up"></i></span>
+                    <span><i class="fa fa-wrench"></i></span>
+                    <span class="sparkline9-collapse-close"><i class="fa fa-times"></i></span>
+                </div>
+            </div>
+        </div>
+        <div class="sparkline9-graph dashone-comment">
+            <div class="datatable-dashv1-list custom-datatable-overright dashtwo-project-list-data">
+                <div id="toolbar1">
+                    <select class="form-control">
+                        <option value="">Export Basic</option>
+                        <option value="all">Export All</option>
+                        <option value="selected">Export Selected</option>
+                    </select>
+                </div>
+                <table id="table1" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-resizable="true" data-cookie="true" data-page-size="5" data-page-list="[5, 10, 15, 20, 25]" data-cookie-id-table="saveId" data-show-export="true">
+                    <thead>
+                        <tr>
+                            <th data-field="ProjectId">Name</th>
+                            <th data-field="CreatedDate">Created</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var project in Model.myprojects)
+                        {
+                            <tr>
+                                <td>
+                                    @project.Name
+
+                                </td>
+                                <td>
+
+                                    @project.CreatedDate
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        @*</div>*@
+    </div>
+    <div class="col-lg-6">
+        @*<div class="sparkline9-list shadow-reset mg-tb-30">*@
+        <div class="sparkline9-hd">
+            <div class="main-sparkline9-hd">
+                <h1>User project list</h1>
+                <div class="sparkline9-outline-icon">
+                    <span class="sparkline9-collapse-link"><i class="fa fa-chevron-up"></i></span>
+                    <span><i class="fa fa-wrench"></i></span>
+                    <span class="sparkline9-collapse-close"><i class="fa fa-times"></i></span>
+                </div>
+            </div>
+        </div>
+        <div class="sparkline9-graph dashone-comment">
+            <div class="datatable-dashv1-list custom-datatable-overright dashtwo-project-list-data">
+                <div id="toolbar1">
+                    <select class="form-control">
+                        <option value="">Export Basic</option>
+                        <option value="all">Export All</option>
+                        <option value="selected">Export Selected</option>
+                    </select>
+                </div>
+                <table id="table1" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-resizable="true" data-cookie="true" data-page-size="5" data-page-list="[5, 10, 15, 20, 25]" data-cookie-id-table="saveId" data-show-export="true">
+                    <thead>
+                        <tr>
+                            <th data-field="TicketId">Name</th>
+                            <th data-field="TicketPriorities">Priority</th>
+                            <th data-field="TicketTypes">Type</th>
+                            <th data-field="TicketStatus">Status</th>
+                            <th data-field="TicketCreated">Date</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var ticket in Model.mytickets)
+                        {
+                            <tr>
+                                <td>
+                                    @ticket.Id
+                                </td>
+                                <td>
+                                    @ticket.TicketPriority.PriorityName
+
+                                </td>
+                                <td>
+
+                                    @ticket.TicketType.TypeName
+                                </td>
+                                <td>
+                                    @ticket.TicketStatus.StatusName
+
+                                </td>
+                                <td>
+
+                                    @ticket.Created
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        @*</div>*@
+    </div>
+}
+else if (User.IsInRole("Project_Manager"))
+{
+    <div class="income-order-visit-user-area">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="income-dashone-total shadow-reset nt-mg-b-30">
+                        <div class="income-title">
+                            <div class="main-income-head">
+                                <h2>Users</h2>
+                                <div class="main-income-phara">
+                                    <p>Total</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="income-dashone-pro">
+                            <div class="income-rate-total">
+                                <div class="price-adminpro-rate">
+                                    <h3><span></span><span class="counter">@Model.myusers.Count()</span></h3>
+                                </div>
+                                <div class="price-graph">
+                                    <span id="sparkline1"></span>
+                                </div>
+                            </div>
+                            <div class="income-range">
+                                <p>All users</p>
+                                <span class="income-percentange"><i class="fa fa-bolt"></i></span>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="income-dashone-total shadow-reset nt-mg-b-30">
+                        <div class="income-title">
+                            <div class="main-income-head">
+                                <h2>Tickets</h2>
+                                <div class="main-income-phara order-cl">
+                                    <p>Tickets</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="income-dashone-pro">
+                            <div class="income-rate-total">
+                                <div class="price-adminpro-rate">
+                                    <h3><span class="counter">@Model.mytickets.Count()</span></h3>
+                                </div>
+                                <div class="price-graph">
+                                    <span id="sparkline6"></span>
+                                </div>
+                            </div>
+                            <div class="income-range order-cl">
+                                <p>New Tickets</p>
+                                <span class="income-percentange"><i class="fa fa-level-up"></i></span>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="income-dashone-total shadow-reset nt-mg-b-30">
+                        <div class="income-title">
+                            <div class="main-income-head">
+                                <h2>Projects</h2>
+                                <div class="main-income-phara visitor-cl">
+                                    <p>Projects</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="income-dashone-pro">
+                            <div class="income-rate-total">
+                                <div class="price-adminpro-rate">
+                                    <h3><span class="counter">@Model.myprojects.Count()</span></h3>
+                                </div>
+                                <div class="price-graph">
+                                    <span id="sparkline2"></span>
+                                </div>
+                            </div>
+                            <div class="income-range visitor-cl">
+                                <p>Number of Projects</p>
+                                <span class="income-percentange"><i class="fa fa-level-up"></i></span>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- income order visit user End -->
+    <div class="income-dashone-total shadow-reset nt-mg-b-30">
+        <div class="row">
+            <div class="col-md-6">
+                <div id="demoChart1"></div>
+            </div>
+            <div class="col-md-6">
+                <div id="demoChart2"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="sparkline9-list shadow-reset mg-tb-30">
+            <div class="sparkline9-hd">
+                <div class="main-sparkline9-hd">
+                    <h1>User Tickets list</h1>
+                    <div class="sparkline9-outline-icon">
+                        <span class="sparkline9-collapse-link"><i class="fa fa-chevron-up"></i></span>
+                        <span><i class="fa fa-wrench"></i></span>
+                        <span class="sparkline9-collapse-close"><i class="fa fa-times"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="sparkline9-graph dashone-comment">
+                <div class="datatable-dashv1-list custom-datatable-overright dashtwo-project-list-data">
+                    <div id="toolbar1">
+                        <select class="form-control">
+                            <option value="">Export Basic</option>
+                            <option value="all">Export All</option>
+                            <option value="selected">Export Selected</option>
+                        </select>
+                    </div>
+                    <table id="table1" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-resizable="true" data-cookie="true" data-page-size="5" data-page-list="[5, 10, 15, 20, 25]" data-cookie-id-table="saveId" data-show-export="true">
+                        <thead>
+                            <tr>
+                                <th data-field="TicketId">Name</th>
+                                <th data-field="TicketPriorities">Priority</th>
+                                <th data-field="TicketTypes">Type</th>
+                                <th data-field="TicketStatus">Status</th>
+                                <th data-field="TicketCreated">Date</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var ticket in Model.mytickets)
+                            {
+                                <tr>
+                                    <td>
+                                        @ticket.Id
+                                    </td>
+                                    <td>
+                                        @ticket.TicketPriority.PriorityName
+
+                                    </td>
+                                    <td>
+
+                                        @ticket.TicketType.TypeName
+                                    </td>
+                                    <td>
+                                        @ticket.TicketStatus.StatusName
+
+                                    </td>
+                                    <td>
+
+                                        @ticket.Created
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="sparkline9-list shadow-reset mg-tb-30">
+            <div class="sparkline9-hd">
+                <div class="main-sparkline9-hd">
+                    <h1>User project list</h1>
+                    <div class="sparkline9-outline-icon">
+                        <span class="sparkline9-collapse-link"><i class="fa fa-chevron-up"></i></span>
+                        <span><i class="fa fa-wrench"></i></span>
+                        <span class="sparkline9-collapse-close"><i class="fa fa-times"></i></span>
+                    </div>
+                </div>
+            </div>
+            <div class="sparkline9-graph dashone-comment">
+                <div class="datatable-dashv1-list custom-datatable-overright dashtwo-project-list-data">
+                    <div id="toolbar1">
+                        <select class="form-control">
+                            <option value="">Export Basic</option>
+                            <option value="all">Export All</option>
+                            <option value="selected">Export Selected</option>
+                        </select>
+                    </div>
+                    <table id="table1" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-resizable="true" data-cookie="true" data-page-size="5" data-page-list="[5, 10, 15, 20, 25]" data-cookie-id-table="saveId" data-show-export="true">
+                        <thead>
+                            <tr>
+                                <th data-field="TicketId">Name</th>
+                                <th data-field="TicketPriorities">Priority</th>
+                                <th data-field="TicketTypes">Type</th>
+                                <th data-field="TicketStatus">Status</th>
+                                <th data-field="TicketCreated">Date</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var ticket in Model.mytickets)
+                            {
+                                <tr>
+                                    <td>
+                                        @ticket.Id
+                                    </td>
+                                    <td>
+                                        @ticket.TicketPriority.PriorityName
+
+                                    </td>
+                                    <td>
+
+                                        @ticket.TicketType.TypeName
+                                    </td>
+                                    <td>
+                                        @ticket.TicketStatus.StatusName
+
+                                    </td>
+                                    <td>
+
+                                        @ticket.Created
+                                    </td>
+                                </tr>
+
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+@section scripts
+{
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.min.js"></script>
+    <script>
+        $(function () {
+            var url = '@Url.Action("ProduceChart1Data","Graphing")';
+            $.post(url).then(function (response) {
+                new Morris.Bar({
+                    element: 'demoChart1',
+                    data: response,
+                    xkey: 'label',
+                    ykeys: ['value'],
+                    labels: ['Ticket Count'],
+                    resize: true
+                });
+            });
+            var url = '@Url.Action("ProduceChart2Data","Graphing")';
+            $.post(url).then(function (response) {
+                new Morris.Donut({
+                    element: 'demoChart2',
+                    data: response,
+                    xkey: 'label',
+                    ykeys: ['value'],
+                    labels: ['Ticket Count'],
+                    resize: true
+                });
+            });
+        })
+
+    </script>
+    <script>
+
+                /*----------------------------------------*/
+                /*  1.  Bar Chart
+                /*----------------------------------------*/
+                var url = '@Url.Action("ProduceBarChart","Graphing")';
+                var ctx = document.getElementById("bcpriority");
+                $.post(url).then(function (response) {
+
+                    new Chart(ctx, {
+                        type: 'bar',
+                        data: [response],
+
+                        options: {
+                        scales: {
+                            xAxes: [{
+                                ticks: {
+                                    autoSkip: false,
+                                    maxRotation: 0
+                                },
+                                ticks: {
+                                    fontColor: "#fff", // this here
+                                }
+                            }],
+                            yAxes: [{
+                                ticks: {
+                                    autoSkip: false,
+                                    maxRotation: 0
+                                },
+                                ticks: {
+                                    fontColor: "#fff", // this here
+                                }
+                            }]
+                        }
+                    }
+                        });
+                    });
+
+    </script>
+}

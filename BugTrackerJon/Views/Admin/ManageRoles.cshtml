@@ -1,0 +1,65 @@
+﻿@model IEnumerable<BugTrackerJon.Models.ManageRoleViewModel>
+@{
+    ViewBag.Title = "ManageRoles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    .cntlWide {
+        width: 70%;
+    }
+</style>
+<h3>ManageRoles</h3>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="row">
+                    <div class=" col-md-12">
+                        @Html.ListBox("UserIds", null, new { @class = "cntlWide" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class=" col-md-12">
+                        @Html.DropDownList("Role", null, "--Select Role--", new { @class = "cntlWide" })
+                    </div>
+                </div>
+                <div class="row">
+                    <div class=" col-md-12">
+                        <button type="submit" class=" btn btn-primary cntlWide">Submit</button>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="static-table-area">
+
+            <div class="col-md-3">
+                <table class="table">
+                    <tr>
+                        <th>
+                            @Html.DisplayName("User Name")
+                        </th>
+                        <th>
+                            @Html.DisplayName("Role")
+                        </th>
+                        <th></th>
+                    </tr>
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(model => user.UserName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => user.RoleName)
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

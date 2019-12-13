@@ -1,0 +1,101 @@
+﻿@model BugTrackerJon.Models.AdminUser
+@using BugTrackerJon.Models
+@using Microsoft.AspNet.Identity
+
+
+@{
+    var db = new ApplicationDbContext();
+    var userId = User.Identity.GetUserId();
+    var user = db.Users.Find(userId);
+}
+
+
+@{
+    ViewBag.Title = "Manage";
+}
+
+<!doctype html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Profile | Adminpro - Admin Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <!-- Breadcome start-->
+    <div class="breadcome-area mg-b-30">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcome-list map-mg-t-40-gl shadow-reset">
+                        <div class="breadcome-heading">
+                            <h2>Profile</h2>
+                        </div>
+                        <ul class="breadcome-menu">
+                            <li>
+                                <a href="#">Home</a> <span class="bread-slash">/</span>
+                            </li>
+                            <li>
+                                <a href="#">Graphs</a> <span class="bread-slash">/</span>
+                            </li>
+                            <li>
+                                <span class="bread-blod">Profile</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcome End-->
+    <div class="user-profile-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                    <div class="user-profile-wrap shadow-reset">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        <div class="user-profile-img">
+                                            <img src="@user.AvatarPath" alt="image" />
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-9">
+                                        @using (Html.BeginForm("EditProfile", "Manage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <div class="form-group">
+                                                @Html.Label("example-text-input", "First Name", new { @class = "col-form-label" })
+                                                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @type = "text" })
+                                                @Html.Label("example-text-input", "Last Name", new { @class = "col-form-label" })
+                                                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @type = "text" })
+                                                @Html.Label("disabledTextInput", "Display Name", new { @class = "col-form-label" })
+                                                @Html.TextBoxFor(m => m.DisplayName, new { @class = "form-control", @type = "text" })
+                                                @Html.Label("disabledTextInput", "Email", new { @class = "col-form-label" })
+                                                @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @type = "text" })
+                                                @Html.Label("disabledTextInput", "Avatar", new { @class = "col-form-label" })
+                                                @Html.TextBoxFor(m => m.AvatarPath, new { @class = "form-control", @type = "file" })
+                                            </div>
+                                            <button id="saveButton" type="submit">Save Changes</button>
+                                            <button id="editButton" type="button">Edit</button>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

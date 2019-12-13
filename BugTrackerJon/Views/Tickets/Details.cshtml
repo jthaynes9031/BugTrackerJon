@@ -1,0 +1,274 @@
+﻿@model BugTrackerJon.Models.Tickets
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+<div class="project-details-area mg-b-15">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                <div class="project-details-wrap shadow-reset">
+                    <div class="row">
+                        <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                            <div class="project-details-title">
+                                <h2><span class="profile-details-name-nn"></span>@Html.DisplayFor(model => model.Title) </h2>
+                            </div>
+                            <ul id="adminpro-demo2" class="comment-action-st collapse">
+                                <li>
+                                    <a href="#">Add</a>
+                                </li>
+                                <li>
+                                    <a href="#">Report</a>
+                                </li>
+                                <li>
+                                    <a href="#">Hide Profile</a>
+                                </li>
+                                <li>
+                                    <a href="#">Turn on Profile</a>
+                                </li>
+                                <li>
+                                    <a href="#">Turn off Profile</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                            <div class="admin-comment-month project-details-action">
+                                <button class="comment-setting" data-toggle="collapse" data-target="#adminpro-demo2">...</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="project-details-mg">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <div class="project-details-st">
+                                            <span><strong>Status:</strong></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                        <div class="btn-group project-list-ad">
+                                            <button class="btn btn-white btn-xs">Active</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-details-mg">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <div class="project-details-st">
+                                            <span><strong>@Html.DisplayNameFor(model => model.Title)</strong></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                        <div class="project-details-dt">
+                                            <span>@Html.DisplayFor(model => model.Title)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                            <div class="project-details-mg">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <div class="project-details-st">
+                                            <span><strong>@Html.DisplayNameFor(model => model.Updated)</strong></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                        <div class="project-details-dt">
+                                            <span>@Html.DisplayFor(model => model.Updated)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-details-mg">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <div class="project-details-st">
+                                            <span><strong>  @Html.DisplayNameFor(model => model.Created)</strong></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                        <div class="project-details-dt">
+                                            <span>@Html.DisplayFor(model => model.Created)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-details-mg">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <div class="project-details-st">
+                                            <span><strong>  @Html.DisplayNameFor(model => model.TicketStatus.StatusName)</strong></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                        <div class="project-details-dt">
+                                            <span>@Html.DisplayFor(model => model.TicketStatus.StatusName)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-details-mg">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <div class="project-details-st">
+                                            <span><strong>  @Html.DisplayNameFor(model => model.TicketPriority.PriorityName)</strong></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                        <div class="project-details-dt">
+                                            <span>@Html.DisplayFor(model => model.TicketPriority.PriorityName)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="project-details-mg">
+                                <div class="row">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+                                        <div class="project-details-st">
+                                            <span><strong>  @Html.DisplayNameFor(model => model.TicketType.TypeName)</strong></span>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+                                        <div class="project-details-dt">
+                                            <span>@Html.DisplayFor(model => model.TicketType.TypeName)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="project-details-tab">
+                            <ul class="nav nav-tabs res-pd-less-sm">
+                                <li class="active">
+                                    <a data-toggle="tab" href="#home" aria-expanded="undefined">Ticket Comments</a>
+                                </li>
+                                <li>
+                                    <a data-toggle="tab" href="#users" aria-expanded="undefined">Ticket Attachments</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content res-tab-content-project">
+                                <div id="home" class="tab-pane fade in active animated zoomInLeft">
+                                    <table class="table table-striped" id="allTicketstTable">
+                                        <thead>
+                                            <tr>
+                                                <th>Comments</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var comment in Model.TicketComments)
+                                            {
+                                                <tr>
+                                                    <td>
+                                                        <div class="container mt-3">
+                                                            <h3>@comment.Owner</h3>
+                                                            <div class="media">                                                               
+                                                                <div class="media-body">
+                                                                    <h5>@comment.Body</h5>
+                                                                    <h4>Written: @comment.CreatedDate.ToString("MMM dd, yyyy")</h4>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div id="users" class="tab-pane fade animated bounceInUp">
+                                    <div class="project-details-completeness">
+                                        <table class="table table-striped" id="allUsersTable">
+                                            <thead>
+                                                <tr>
+                                                    <th>Attachments</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        @foreach (var Attach in Model.TicketAttachments)
+                                                        {
+                                                            <a href=@Url.Content(Attach.FilePath) target="_blank"> @Attach.FilePath.Split('/')[2]</a>
+                                                            <br />
+
+                                                        }
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <div class="project-details-descri project-details-mg-t-30 shadow-reset">
+                    <div class="row">
+                        <div>
+                            @using (Html.BeginForm("Create", "TicketComments", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
+                                @Html.Hidden("TicketId", Model.Id)
+                                <div class="row">
+                                    <div class="col-lg-offset-3">
+                                        @Html.TextArea("Comments", new { rows = 5, cols = 50, placeholder = "Add comment" })
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-offset-3 col-md-6">
+                                        <button type="submit" class="btn btn-sm btn-primary">Add Comment</button>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <div class="project-details-descri project-details-mg-t-30 shadow-reset">
+                    @using (Html.BeginForm("Create", "TicketAttachments", FormMethod.Post, new { enctype = "Multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.Hidden("TicketId", Model.Id)
+
+                        @Html.Label("Ticket Attachment", htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            <input type="file" name="image" class="form-control" />
+                            @Html.ValidationMessage("Attach.FilePath", "", new { @class = "text-danger" })
+                        </div>
+                        <button type="submit" class="btn btn-sm btn-primary">Add Attachment</button>
+                    }
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <div class="project-details-descri project-details-mg-t-30 shadow-reset">
+                    @foreach (var history in Model.TicketHistories.OrderByDescending(t => t.UpdateDate).Take(5))
+                    {
+                        <div>
+                            <h5>@history.Updater.UserName</h5>
+                            <span class="time">@history.UpdateDate</span>
+                        </div>
+                        <p>The @history.Property has been changed from @history.OldValue to @history.NewValue</p>
+                        <br />
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

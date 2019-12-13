@@ -1,0 +1,309 @@
+﻿
+@{
+    ViewBag.Title = "DemoUser";
+    Layout = null;
+}
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Dashboard v.2.0 | Adminpro - Admin Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- favicon
+        ============================================ -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <!-- Google Fonts
+        ============================================ -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i,800" rel="stylesheet">
+    <!-- Bootstrap CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/form.css" />
+    <!-- Bootstrap CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css">
+    <!-- adminpro icon CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/adminpro-custon-icon.css">
+    <!-- meanmenu icon CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/meanmenu.min.css">
+    <!-- mCustomScrollbar CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/jquery.mCustomScrollbar.min.css">
+    <!-- animate CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/animate.css">
+    <!-- jvectormap CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/jquery-jvectormap-2.0.3.css">
+    <!-- normalize CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/bootstrap-table.css">
+    <link rel="stylesheet" href="~/Content/bootstrap-editable.css">
+    <!-- normalize CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/normalize.css">
+    <!-- charts CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/c3.min.css">
+    <!-- style CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/style.css">
+    <!-- responsive CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/responsive.css">
+    <link href="~/Content/tabs.css" rel="stylesheet" />
+    <!--datatables-->
+    <link href="~/Content/datatables.min.css" rel="stylesheet" />
+    <link href="~/Content/Lobibox.min.css" rel="stylesheet" />
+    <link href="~/Content/notifications.css" rel="stylesheet" />
+    <!-- modernizr JS
+        ============================================ -->
+    <script src="~/Scripts/modernizr-2.8.3.min.js"></script>
+</head>
+<div class="header-top-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="admin-logo">
+                    <a href="#">
+                        <img src="~/Images/logo.png" alt="" />
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-0 col-xs-12">
+                <div class="header-top-menu">
+                    <ul class="nav navbar-nav mai-top-nav">
+                        <li class="nav-item">
+                        </li>
+                        <li class="nav-item">
+                        </li>
+                        <li class="nav-item">
+                        </li>
+                        <li class="nav-item dropdown">
+                        </li>
+                        <li class="nav-item">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-9 col-sm-6 col-xs-12">
+                <div class="header-right-info">
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Header top area end-->
+
+<body class=" darklayout">
+    <section>
+        <!-- Breadcome start-->
+        <div class="breadcome-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="breadcome-list shadow-reset">
+                            <div class="breadcome-heading text-center">
+                                <h2>Demo Login</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Breadcome End-->
+        <div class="widgets-personal-info-area">
+            <div class="row">
+                    <div class="col-lg-3">
+                <div class="container-fluid">
+                        @using (Html.BeginForm("DemoLoginAsync", "Account", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.Hidden("emailKey", "DemoAdminEmail")
+                            <div class="personal-info-wrap shadow-reset">
+                                <div class="widget-head-info-box">
+                                    <div class="persoanl-widget-hd">
+                                        <h2>Admin</h2>
+                                        <p>Can Control almost everything</p>
+                                    </div>
+                                    <img src="~/img/face_co (3).png"  class="img-circle circle-border m-b-md" alt="profile">
+                                </div>
+                                <div class="widget-text-box">
+                                    <h4>Admin</h4>
+                                    <p>Manage Roles and Assign Users to Projects.</p>
+                                    <div class="text-right like-love-list">
+                                        <button type="submit" class="btn btn-xs btn-primary">Login</button>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+                    <div class="col-lg-3">
+                <div class="container-fluid">
+                        @using (Html.BeginForm("DemoLoginAsync", "Account", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.Hidden("emailKey", "DemoPMEmail")
+                            <div class="personal-info-wrap shadow-reset">
+                                <div class="widget-head-info-box">
+                                    <div class="persoanl-widget-hd">
+                                        <h2>Project Manager</h2>
+                                        <p>Manage Projects</p>
+                                    </div>
+                                    <img src="~/img/face_co.png" class="img-circle circle-border m-b-md" alt="profile">
+                                </div>
+                                <div class="widget-text-box">
+                                    <h4>Project Managers</h4>
+                                    <p>Manage and creat Projects.</p>
+                                    <div class="text-right like-love-list">
+                                        <button type="submit" class="btn btn-xs btn-primary">Login</button>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+                    <div class="col-lg-3">
+                <div class="container-fluid">
+                        @using (Html.BeginForm("DemoLoginAsync", "Account", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.Hidden("emailKey", "DemoDeveloperEmail")
+                            <div class="personal-info-wrap shadow-reset">
+                                <div class="widget-head-info-box">
+                                    <div class="persoanl-widget-hd">
+                                        <h2>Developer</h2>
+                                        <p>Want to try Developing</p>
+                                    </div>
+                                    <img src="~/img/face_co (2).png" class="img-circle circle-border m-b-md" alt="profile">
+                                </div>
+                                <div class="widget-text-box">
+                                    <h4>Developer</h4>
+                                    <p>Will be assigned to Projects and Tickets.</p>
+                                    <div class="text-right like-love-list">
+                                        <button type="submit" class="btn btn-xs btn-primary">Login</button>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                </div>
+                    <div class="col-lg-3">
+                <div class="container-fluid">
+                        @using (Html.BeginForm("DemoLoginAsync", "Account", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+                            @Html.Hidden("emailKey", "DemoSubmitterEmail")
+                            <div class="personal-info-wrap shadow-reset">
+                                <div class="widget-head-info-box">
+                                    <div class="persoanl-widget-hd">
+                                        <h2>Submitter</h2>
+                                        <p>Try being a Submitter</p>
+                                    </div>
+                                    <img src="~/img/face_co (1).png" class="img-circle circle-border m-b-md" alt="profile">
+                                </div>
+                                <div class="widget-text-box">
+                                    <h4>Submitter</h4>
+                                    <p>Can create and assign tickets.</p>
+                                    <div class="text-right like-love-list">
+                                        <button type="submit" class="btn btn-xs btn-primary">Login</button>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- login End-->
+        <!-- Footer Start-->
+        @*<div class="footer-copyright-area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="footer-copy-right">
+                                <p>Copyright &#169; 2018 Colorlib All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+        <!-- jquery
+        ============================================ -->
+        <script src="~/Scripts/jquery-1.11.3.min.js"></script>
+        <!-- bootstrap JS
+        ============================================ -->
+        <script src="~/Scripts/bootstrap.min.js"></script>
+        <!-- meanmenu JS
+        ============================================ -->
+        <script src="~/Scripts/jquery.meanmenu.js"></script>
+        <!-- mCustomScrollbar JS
+        ============================================ -->
+        <script src="~/Scripts/jquery.mCustomScrollbar.concat.min.js"></script>
+        <!-- sticky JS
+        ============================================ -->
+        <script src="~/Scripts/jquery.sticky.js"></script>
+        <!-- scrollUp JS
+        ============================================ -->
+        <script src="~/Scripts/jquery.scrollUp.min.js"></script>
+        <!-- scrollUp JS
+        ============================================ -->
+        <script src="~/Scripts/wow.min.js"></script>
+        <!-- counterup JS
+        ============================================ -->
+        <script src="~/Scripts/jquery.counterup.min.js"></script>
+        <script src="~/Scripts/waypoints.min.js"></script>
+        <script src="~/Scripts/counterup-active.js"></script>
+        <!-- jvectormap JS
+        ============================================ -->
+        <script src="~/Scripts/jquery-jvectormap-2.0.2.min.js"></script>
+        <script src="~/Scripts/jquery-jvectormap-world-mill-en.js"></script>
+        <script src="~/Scripts/jvectormap-active.js"></script>
+        <!-- peity JS
+        ============================================ -->
+        <script src="~/Scripts/jquery.peity.min.js"></script>
+        <script src="~/Scripts/peity-active.js"></script>
+        <!-- sparkline JS
+        ============================================ -->
+        <script src="~/Scripts/jquery.sparkline.min.js"></script>
+        <script src="~/Scripts/sparkline-active.js"></script>
+        <!-- flot JS
+        ============================================ -->
+        <script src="~/Scripts/jquery.flot.js"></script>
+        <script src="~/Scripts/jquery.flot.tooltip.min.js"></script>
+        <script src="~/Scripts/jquery.flot.spline.js"></script>
+        <script src="~/Scripts/jquery.flot.resize.js"></script>
+        <script src="~/Scripts/jquery.flot.pie.js"></script>
+        <script src="~/Scripts/jquery.flot.symbol.js"></script>
+        <script src="~/Scripts/jquery.flot.time.js"></script>
+        <script src="~/Scripts/dashtwo-flot-active.js"></script>
+        <script src="~/Scripts/notification-active.js"></script>
+        <script src="~/Scripts/Lobibox.js"></script>
+        <!-- data table JS
+        ============================================ -->
+        <script src="~/Scripts/bootstrap-table.js"></script>
+        <script src="~/Scripts/tableExport.js"></script>
+        <script src="~/Scripts/data-table-active.js"></script>
+        <script src="~/Scripts/bootstrap-table-editable.js"></script>
+        <script src="~/Scripts/bootstrap-editable.js"></script>
+        <script src="~/Scripts/bootstrap-table-resizable.js"></script>
+        <script src="~/Scripts/colResizable-1.5.source.js"></script>
+        <script src="~/Scripts/bootstrap-table-export.js"></script>
+        <!-- main JS
+        ============================================ -->
+        <script src="~/Scripts/main.js"></script>
+        <script src="~/Scripts/datatables.min.js"></script>"
+        <script>
+            $('#ProjectTable').DataTable();
+            $('#tickeTable').DataTable();
+        </script>
+    </section>
+</body>

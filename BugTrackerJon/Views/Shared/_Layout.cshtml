@@ -1,0 +1,323 @@
+﻿@using BugTrackerJon.Models;
+@using Microsoft.AspNet.Identity;
+@using BugTrackerJon.Helpers
+
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Dashboard v.2.0 | Adminpro - Admin Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- favicon
+        ============================================ -->
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+    <!-- Google Fonts
+        ============================================ -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i,800" rel="stylesheet">
+    <!-- Bootstrap CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/form.css" />
+    <!-- Bootstrap CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/font-awesome.min.css">
+    <!-- adminpro icon CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/adminpro-custon-icon.css">
+    <!-- meanmenu icon CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/meanmenu.min.css">
+    <!-- mCustomScrollbar CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/jquery.mCustomScrollbar.min.css">
+    <!-- animate CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/animate.css">
+    <!-- jvectormap CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/jquery-jvectormap-2.0.3.css">
+    <!-- normalize CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/bootstrap-table.css">
+    <link rel="stylesheet" href="~/Content/bootstrap-editable.css">
+    <!-- normalize CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/normalize.css">
+    <!-- charts CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/c3.min.css">
+    <link href="~/Content/charts.css" rel="stylesheet" />
+    <!-- style CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/style.css">
+    <!-- responsive CSS
+        ============================================ -->
+    <link rel="stylesheet" href="~/Content/responsive.css">
+    <link href="~/Content/tabs.css" rel="stylesheet" />
+    <!--datatables-->
+    <link href="~/Content/datatables.min.css" rel="stylesheet" />
+    <link href="~/Content/Lobibox.min.css" rel="stylesheet" />
+    <link href="~/Content/notifications.css" rel="stylesheet" />
+    <!-- modernizr JS
+        ============================================ -->
+    <script src="~/Scripts/modernizr-2.8.3.min.js"></script>
+</head>
+
+<body class="darklayout" style="min-height:!important 100%">
+    @{ ApplicationUser user = null;}
+    @if (Request.IsAuthenticated)
+    {
+        var db = new ApplicationDbContext();
+        user = db.Users.Find(User.Identity.GetUserId());
+    }
+    <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <!-- Header top area start-->
+    <div class="wrapper-pro">
+        <div class="left-sidebar-pro">
+            <nav id="sidebar">
+                <div class="sidebar-header">
+                    @if (user != null)
+                    {
+                        <a href="#">
+                            <img src="@user.AvatarPath" alt="" />
+                        </a>
+                        <h5>@user.DisplayName</h5>
+                    }
+                    else
+                    {
+
+                        <img src="~/Avatars/default_user.png" alt="" />
+
+                        <h3>Guest User</h3>
+                    }
+                </div>
+                <div class="left-custom-menu-adp-wrap">
+                    <ul class="nav navbar-nav left-sidebar-menu-pro">
+                        <li class="nav-item">
+                            <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa big-icon fa-home"></i> <span class="mini-dn">Home</span> <span class="indicator-right-menu mini-dn"><i class="fa indicator-mn fa-angle-left"></i></span></a>
+                            <div role="menu" class="dropdown-menu left-menu-dropdown animated flipInX">
+                                <a href='@Url.Action("Index","Home")' class="dropdown-item">Home</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href='@Url.Action("Index","Projects","Projects")' data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa big-icon fa-envelope"></i> <span class="mini-dn">Projects</span> <span class="indicator-right-menu mini-dn"><i class="fa indicator-mn fa-angle-left"></i></span></a>
+                            <div role="menu" class="dropdown-menu left-menu-dropdown animated flipInX">
+                                <a href='@Url.Action("Create","Projects","Create Project")' class="dropdown-item">Create Projects</a>
+                                <a href='@Url.Action("Index","Projects","Create Project")' class="dropdown-item">Projects List</a>
+                                <a href='@Url.Action("ManageProject","Admin","Assign Projects")' class="dropdown-item">Assign Project</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa big-icon fa-flask"></i> <span class="mini-dn">Tickets</span> <span class="indicator-right-menu mini-dn"><i class="fa indicator-mn fa-angle-left"></i></span></a>
+                            <div role="menu" class="dropdown-menu left-menu-dropdown animated flipInX">
+                                <a href='@Url.Action("Index","Tickets","Create Project")' class="dropdown-item">Ticket List</a>
+                                <a href='@Url.Action("Create","Tickets","Create Project")' class="dropdown-item">Create Ticket</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <!-- Header top area start-->
+        <div class="content-inner-all">
+            <div class="header-top-area">
+                <div class="fixed-header-top">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-lg-1 col-md-6 col-sm-6 col-xs-12">
+                                <button type="button" id="sidebarCollapse" class="btn bar-button-pro header-drl-controller-btn btn-info navbar-btn">
+                                    <i class="fa fa-bars"></i>
+                                </button>
+                                <div class="admin-logo logo-wrap-pro">
+                                    <a href="#">
+                                        <img src="img/logo/log.png" alt="" />
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-1 col-sm-1 col-xs-12">
+                                <div class="header-top-menu tabl-d-n">
+                                    <ul class="nav navbar-nav mai-top-nav">
+                                        <li class="nav-item">
+                                            <a href='@Url.Action("Index","Home","Dashboard")'>DashBoard</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href='@Url.Action("Login","Account","Login")'>Login</a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href='@Url.Action("ManageRoles","Admin","Manage Roles")'>Manage Roles</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
+                                <div class="header-right-info">
+                                    <ul class="nav navbar-nav mai-top-nav header-right-menu">
+                                        <li class="nav-item">
+                                            <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="fa fa-bell-o" aria-hidden="true"></i><span class="indicator-nt"></span></a>
+                                            <ul role="menu" class="notification-author dropdown-menu animated flipInX">
+                                                <a href=@Url.Action("Index","TicketNotifications") data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
+                                                    <span class="adminpro-icon adminpro-chat-pro"></span>
+                                                    <span class=" badge">@NotificationHelper.GetUnreadNotifications().Count()</span>
+                                                </a>
+                                                <div>
+                                                    <ul id="menu1" role="menu" class="author-message-top dropdown-menu animated flipInX">
+                                                        @foreach (var unreadNotification in NotificationHelper.GetUnreadNotifications())
+                                                        {
+                                                            <li>
+                                                                @using (Html.BeginForm("Dismiss", "TicketNotifications", FormMethod.Get))
+                                                                {
+                                                                    @Html.AntiForgeryToken();
+                                                                    @Html.Hidden("Id", unreadNotification.Id)
+                                                                    <a href="#">
+                                                                        <div class="notes-list-flow">
+                                                                            <!--This is the image of the person that generated the notification-->
+                                                                            <div class="image">
+                                                                                <span class="image"><img src="@unreadNotification.Sender.AvatarPath" alt=" Sender" /></span>
+                                                                            </div>
+                                                                            <span>
+                                                                                <span class="notification-author">@unreadNotification.Sender.DisplayName</span>
+                                                                                <span class="notification-date">Created:@unreadNotification.CreatedDate.ToString("MM,dd,yyyy")</span>
+                                                                            </span>
+                                                                            <span class="message">
+                                                                                @unreadNotification.NotificationBody
+                                                                            </span>
+                                                                            <br />
+                                                                        </div>
+                                                                    </a>
+                                                                    <button type="submit">Dismiss</button>
+                                                                }
+                                                            </li>
+                                                        }
+                                                    </ul>
+                                                </div>
+                                            </ul>
+                                            @*<div class="notification-view">
+                                                    <a href="#">View All Notification</a>
+                                                </div>*@
+                                        </li>
+                                        <li class="nav-item">
+                                            <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
+                                                <span class="img-circle circle-border m-b-md">@user.AvatarPath</span>
+                                                <span class="admin-name">@user.DisplayName</span>
+                                                <span class="author-project-icon adminpro-icon adminpro-down-arrow"></span>
+                                            </a>
+                                            <ul role="menu" class="dropdown-header-top author-log dropdown-menu animated flipInX">
+                                                <li>
+                                                    <a href='@Url.Action("EditProfile","Manage",new {Id= user.Id })' class="dropdown-item">Edit my profile</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#"><span class="adminpro-icon adminpro-user-rounded author-log-ic"></span>My Profile</a>
+                                                </li>
+                                                <li>
+                                                    <a href=@Url.Action("CustomLogOff","Account")>Log Out</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @RenderBody()
+        </div>
+    </div>
+
+
+    <!-- Footer Start-->
+    <div class="footer-copyright-area">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="footer-copy-right">
+                        <p>Copyright &#169; 2018 Colorlib All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer End-->
+    <!-- Chat Box End-->
+    <!-- jquery
+        ============================================ -->
+    <script src="~/Scripts/jquery-1.11.3.min.js"></script>
+    <!-- bootstrap JS
+        ============================================ -->
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <!-- meanmenu JS
+        ============================================ -->
+    <script src="~/Scripts/jquery.meanmenu.js"></script>
+    <!-- mCustomScrollbar JS
+        ============================================ -->
+    <script src="~/Scripts/jquery.mCustomScrollbar.concat.min.js"></script>
+    <!-- sticky JS
+        ============================================ -->
+    <script src="~/Scripts/jquery.sticky.js"></script>
+    <!-- scrollUp JS
+        ============================================ -->
+    <script src="~/Scripts/jquery.scrollUp.min.js"></script>
+    <!-- scrollUp JS
+        ============================================ -->
+    <script src="~/Scripts/wow.min.js"></script>
+    <!-- counterup JS
+        ============================================ -->
+    <script src="~/Scripts/jquery.counterup.min.js"></script>
+    <script src="~/Scripts/waypoints.min.js"></script>
+    <script src="~/Scripts/counterup-active.js"></script>
+    <!-- jvectormap JS
+        ============================================ -->
+    <script src="~/Scripts/jquery-jvectormap-2.0.2.min.js"></script>
+    <script src="~/Scripts/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="~/Scripts/jvectormap-active.js"></script>
+    <!-- peity JS
+        ============================================ -->
+    <script src="~/Scripts/jquery.peity.min.js"></script>
+    <script src="~/Scripts/peity-active.js"></script>
+    <!-- sparkline JS
+        ============================================ -->
+    <script src="~/Scripts/jquery.sparkline.min.js"></script>
+    <script src="~/Scripts/sparkline-active.js"></script>
+    <!-- flot JS
+        ============================================ -->
+    <script src="~/Scripts/jquery.flot.js"></script>
+    <script src="~/Scripts/jquery.flot.tooltip.min.js"></script>
+    <script src="~/Scripts/jquery.flot.spline.js"></script>
+    <script src="~/Scripts/jquery.flot.resize.js"></script>
+    <script src="~/Scripts/jquery.flot.pie.js"></script>
+    <script src="~/Scripts/jquery.flot.symbol.js"></script>
+    <script src="~/Scripts/jquery.flot.time.js"></script>
+    <script src="~/Scripts/dashtwo-flot-active.js"></script>
+    <script src="~/Scripts/notification-active.js"></script>
+    <script src="~/Scripts/Lobibox.js"></script>
+
+    <!-- data table JS
+        ============================================ -->
+    <script src="~/Scripts/bootstrap-table.js"></script>
+    <script src="~/Scripts/tableExport.js"></script>
+    <script src="~/Scripts/data-table-active.js"></script>
+    <script src="~/Scripts/bootstrap-table-editable.js"></script>
+    <script src="~/Scripts/bootstrap-editable.js"></script>
+    <script src="~/Scripts/bootstrap-table-resizable.js"></script>
+    <script src="~/Scripts/colResizable-1.5.source.js"></script>
+    <script src="~/Scripts/bootstrap-table-export.js"></script>
+    <!-- main JS
+        ============================================ -->
+    <script src="~/Scripts/Chart.js"></script>
+    <script src="~/Scripts/bar-chart.js"></script>
+    <script src="~/Scripts/main.js"></script>
+    <script src="~/Scripts/datatables.min.js"></script>"
+
+    <script>
+        $('#ProjectTable').DataTable();
+        $('#tickeTable').DataTable();
+    </script>
+    @RenderSection("scripts", false)
+</body>
+
+</html>

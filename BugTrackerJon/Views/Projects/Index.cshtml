@@ -1,0 +1,66 @@
+﻿@model IEnumerable<BugTrackerJon.Models.Projects>
+
+
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Project List</h2>
+<div class="income-order-visit-user-area">
+    <div class="container-fluid">
+        <div class="row">
+            @foreach (var project in Model)
+            {
+                <a href="@Url.Action("Details","Projects",new { id=project.Id})">
+                    <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                        <div class="income-dashone-total shadow-reset nt-mg-b-30">
+                            <div class="income-title">
+                                <div class="main-income-head">
+
+                                    <h2>@project.Name</h2>
+                                    <div class="main-income-phara">
+                                        <a></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="income-dashone-pro">
+                                <div class="income-rate-total">
+                                    <div class="price-adminpro-rate">
+                                        <h3><span></span><span class="counter">@project.Tickets.Count</span></h3>
+                                    </div>
+                                    <div class="price-graph">
+                                        <span id="sparkline1"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <p>
+                        @Html.ActionLink("Edit", "Edit", new { id = project.Id }) 
+                        @Html.ActionLink("Delete", "Delete", new { id = project.Id })
+                            </p>
+                        </div>
+                    </div>
+                </a>
+            }
+            <div>
+
+            </div>
+            <div>
+
+            </div>
+            <div>
+
+            </div>
+        </div>
+    </div>
+    @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+    @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+</div>
+                    
+                    
+                
+           
+       
+   
+
